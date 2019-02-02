@@ -30,7 +30,17 @@ public class LoginTests {
         driver.get("http://secure.smartbearsoftware.com/samples/testcomplete12/WebOrders/login.aspx");
         driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester");
         driver.findElement(By.id("ctl00_MainContent_password")).sendKeys("test" + Keys.ENTER);
-        Assert.assertTrue(driver.getTitle().equals("Web Orders"));
+        Assert.assertEquals(driver.getTitle(), "Web Orders");
+
+    }
+
+    @Test
+    public void logOutTest(){
+        driver.get("http://secure.smartbearsoftware.com/samples/testcomplete12/WebOrders/login.aspx");
+        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester");
+        driver.findElement(By.id("ctl00_MainContent_password")).sendKeys("test" + Keys.ENTER);
+        driver.findElement(By.id("ctl00_logout")).click();
+        Assert.assertEquals(driver.getTitle(), "Web Orders Login");
 
     }
 
